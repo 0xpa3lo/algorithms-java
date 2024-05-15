@@ -42,7 +42,7 @@ class minMaxStack {
       stack.push(2);
       stack.push(3);
       stack.push(4);
-     // System.out.println(stack.peek());
+      System.out.println(stack.peek());
       System.out.println(stack.getMin());
       System.out.println(stack.getMax());
 
