@@ -7,7 +7,7 @@ class minMaxStack {
         private List<HashMap<String, Integer>> minMaxStack = new ArrayList<>();
 
         // O(1)
-        public int peek(){
+    public int peek(){
             return stack.get(stack.size() - 1);
         }
     public void push(int number){

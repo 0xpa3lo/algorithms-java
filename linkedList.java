@@ -8,7 +8,7 @@ class Node {
     }
 }
 
-// create remove method and calculate O() and do recursively 
+// create remove method and calculate O() and do recursively
 class LinkedList {
     Node head;
 
@@ -69,7 +69,7 @@ class LinkedList {
         curr.next = curr.next.next;
         return;
     }
-        throw new IllegalArgumentException(); 
+        throw new IllegalArgumentException();
 }
 
     public void removeRecursive(int removeVal){
@@ -115,7 +115,7 @@ class LinkedList {
         list.insert(0);
         list.insert(1);
         list.printRecursive();
-      
+
     }
 }
 
