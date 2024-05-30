@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.HashMap;
 
 class balancedBrackets {
+  // O(n) time and space complexity
   public static boolean bracketStack(String input) {
     String openBrackets = "{[(";
     String closeBrackets = "}])";
