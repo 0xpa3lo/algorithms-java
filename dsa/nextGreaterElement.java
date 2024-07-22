@@ -10,10 +10,10 @@ public class nextGreaterElement {
         int length = array.length * 2;
 
         for(int i = 0; i < length; i++){
-            int idx = i % array.length;
-            while(!stack.isEmpty() && array[idx] > array[stack.peek()]){
-                int top_idx = stack.pop();
-                result[top_idx] = array[idx];
+            int circularIdx = i % array.length;
+            while(!stack.isEmpty() && array[circularIdx] > array[stack.peek()]){
+                int idx = stack.pop();
+                result[idx] = array[circularIdx];
                 
             }
             stack.push(idx);
