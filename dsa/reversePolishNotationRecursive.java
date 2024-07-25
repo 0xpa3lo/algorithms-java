@@ -1,46 +1,45 @@
 import java.util.Stack;
+
 // Time complexity O(n) and Space complexity O(n)
 public class reversePolishNotationRecursive {
-    public static int rpnr(String[] expression) {
-        return evaluateRpn(0, expression, new Stack<>());
+
+    public static int rpnRecursive(String[] expression) {
+        return _rpnRecursive(0, expression, new Stack<>());
     }
 
-    private static int evaluateRpn(int idx, String[] expression, Stack<Integer> stack) {
+    private static int _rpnRecursive(int idx, String[] expression, Stack<Integer> stack) {
         if (idx >= expression.length) {
-            return stack.peek(); 
+            return stack.peek();  // Final result should be the only element in the stack
         }
+
         String token = expression[idx];
+
         if ("+".equals(token) || "-".equals(token) || "*".equals(token) || "/".equals(token)) {
             int operand2 = stack.pop();
             int operand1 = stack.pop();
             int result;
-            switch (token) {
-                case "+":
-                    result = operand1 + operand2;
-                    break;
-                case "-":
-                    result = operand1 - operand2;
-                    break;
-                case "*":
-                    result = operand1 * operand2;
-                    break;
-                case "/":
-                    result = operand1 / operand2;
-                    break;
-                default:
-                    throw new IllegalArgumentException("Invalid operator: " + token);
+
+            if ("+".equals(token)) {
+                result = operand1 + operand2;
+            } else if ("-".equals(token)) {
+                result = operand1 - operand2;
+            } else if ("*".equals(token)) {
+                result = operand1 * operand2;
+            } else {  // "/".equals(token)
+                result = operand1 / operand2;
             }
+
             stack.push(result);
         } else {
             stack.push(Integer.parseInt(token));
         }
-        
-        return evaluateRpn(idx + 1, expression, stack);
+
+        return _rpnRecursive(idx + 1, expression, stack);
     }
 
     public static void main(String[] args) {
         String[] array = {"50", "3", "17", "+", "2", "-", "/"};
-        int result = rpnr(array);
-        System.out.println(result);
+        int result = rpnRecursive(array);
+        System.out.println(result); // Output: 2
     }
 }
