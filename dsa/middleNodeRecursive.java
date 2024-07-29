@@ -1,44 +1,35 @@
-class Node {
-    int data;
-    Node next;
+import java.util.*;
 
-    public Node(int data){
-        this.data = data;
-        this.next = null;
+// Time complexity O(n), Space complexity O(n)
+class Program {
+  public static class LinkedList {
+    public int value;
+    public LinkedList next;
+
+    public LinkedList(int value) {
+      this.value = value;
+      this.next = null;
     }
-}
+  }
 
-public class middleNodeRecusrive {
-    public Node middle(Node linkedList){
-        return findMiddle(linkedList, getLength(linkedList));
+  public LinkedList middleNode(LinkedList linkedList) {
+    LinkedList middle = _findMiddle(linkedList, linkedList);
+    return middle;
+  }
+  private LinkedList _findMiddle(LinkedList slowNode, LinkedList fastNode){
+        if(fastNode == null || fastNode.next == null){
+            return slowNode;
+        }
+        return _findMiddle(slowNode.next, fastNode.next.next);
+
     }
-
-    private int getLength(Node node) {
-        if (node == null) {
-            return 0;
-        }
-        return 1 + getLength(node.next);
-    }
-
-    private Node findMiddle(Node node, int length) {
-        if (length == 0 || node == null) {
-            return null;
-        }
-        if (length == 1) {
-            return node;
-        }
-        if (length % 2 == 0) {
-            return findMiddle(node.next, length - 2);
-        }
-        return findMiddle(node.next, length - 2);
-    }
-
     public static void main(String[] args) {
         Node head = new Node(1);
         head.next = new Node(2);
         head.next.next = new Node(3);
         head.next.next.next = new Node(4);
         head.next.next.next.next = new Node(5);
-        System.out.println("Middle element is " + new middleNodeRecusrive().middle(head).data);
+        System.out.println("Middle element is " + new middleNode().findMiddle(head).data);
+  
     }
 }
