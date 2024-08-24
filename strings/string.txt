@@ -1,0 +1,4 @@
+Everthing related to strings. 
+In programmin language like java, C#, Python, javascript string are immutable meaning that we cannot easly change the string.
+Every operation to a string lead to coping it.
+Strings are mutable in C and C++. 
