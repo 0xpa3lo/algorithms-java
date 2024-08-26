@@ -6,13 +6,14 @@ class Program {
     LinkedList first = head;
     LinkedList second = head;
     int counter = 1;
-    while(second != null && counter != k) {
+    while(second != null && counter <= k) {
         second = second.next;
         counter++;
   }
     if(second == null){
       head.value = head.next.value;
-      head = head.next;
+      head.next = head.next.next;
+      return;
     }
     while(second.next != null){
       first = first.next;
